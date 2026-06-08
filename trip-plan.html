@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kế hoạch du lịch Ninh Bình - Đà Nẵng | 7-9 Ngày</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #6c5ce7;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #6c5ce7;
+        }
+
+        .card h3 {
+            color: #2d3436;
+            font-size: 1.3em;
+            margin: 20px 0 10px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .overview-item {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .overview-item .icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .overview-item .label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .overview-item .value {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .day-header .day-num {
+            background: rgba(255,255,255,0.25);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .day-header .day-info h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .day-header .day-info p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .timeline {
+            border-left: 3px solid #dfe6e9;
+            margin-left: 25px;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 20px;
+            width: 14px;
+            height: 14px;
+            background: #6c5ce7;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #dfe6e9;
+        }
+
+        .timeline-item .time {
+            color: #6c5ce7;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .timeline-item h4 {
+            color: #2d3436;
+            margin: 5px 0;
+        }
+
+        .timeline-item p {
+            color: #636e72;
+            font-size: 0.95em;
+        }
+
+        .food-tag {
+            display: inline-block;
+            background: #00b894;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin: 3px 3px 3px 0;
+        }
+
+        .landmark-tag {
+            display: inline-block;
+            background: #0984e3;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin: 3px 3px 3px 0;
+        }
+
+        .baby-tag {
+            display: inline-block;
+            background: #fdcb6e;
+            color: #2d3436;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin: 3px 3px 3px 0;
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .cost-table th, .cost-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cost-table th {
+            background: #6c5ce7;
+            color: white;
+            font-weight: 600;
+        }
+
+        .cost-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .cost-table tr:hover {
+            background: #eee;
+        }
+
+        .cost-table .total-row {
+            background: #2d3436 !important;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: #ffeaa7;
+            border-radius: 8px;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .tips-list li::before {
+            content: '💡 ';
+        }
+
+        .baby-tips {
+            background: #fff3e0;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 2px solid #ffcc80;
+        }
+
+        .baby-tips h3 {
+            color: #e65100;
+        }
+
+        .baby-tips ul {
+            margin-left: 20px;
+        }
+
+        .baby-tips li {
+            margin-bottom: 8px;
+            color: #5d4037;
+        }
+
+        .route-map {
+            background: linear-gradient(to right, #dfe6e9, #b2bec3);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .route-map .route-stops {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .route-map .stop {
+            background: #6c5ce7;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .route-map .stop.skip {
+            background: #b2bec3;
+            color: #636e72;
+        }
+
+        .route-map .arrow {
+            font-size: 1.2em;
+            color: #636e72;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .day-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline {
+                margin-left: 15px;
+                padding-left: 20px;
+            }
+
+            .cost-table {
+                font-size: 0.85em;
+            }
+
+            .cost-table th, .cost-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚗 Ninh Binh - Da Nang Road Trip</h1>
+        <p>Hanh trinh kham pha mien Trung Viet Nam | 8 Ngay 7 Dem</p>
+    </header>
+
+    <div class="container">
+        <!-- TONG QUAN -->
+        <div class="card">
+            <h2>📋 Tong Quan Chuyen Di</h2>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="icon">👨‍👩‍👧‍👦</div>
+                    <div class="label">Thanh Vien</div>
+                    <div class="value">4 nguoi lon + 1 be 7 thang</div>
+                </div>
+                <div class="overview-item">
+                    <div class="icon">🚗</div>
+                    <div class="label">Phuong Tien</div>
+                    <div class="value">O to tu lai</div>
+                </div>
+                <div class="overview-item">
+                    <div class="icon">📅</div>
+                    <div class="label">Thoi Gian</div>
+                    <div class="value">8 ngay 7 dem</div>
+                </div>
+                <div class="overview-item">
+                    <div class="icon">📍</div>
+                    <div class="label">Quang Duong</div>
+                    <div class="value">~1.400 km (ca di ve)</div>
+                </div>
+            </div>
+
+            <div class="route-map">
+                <h3>🗺️ Lo Trinh Tong Quat</h3>
+                <div class="route-stops">
+                    <span class="stop">Ninh Binh</span>
+                    <span class="arrow">→</span>
+                    <span class="stop skip">Thanh Hoa (nghi chan)</span>
+                    <span class="arrow">→</span>
+                    <span class="stop skip">Nghe An (nghi chan)</span>
+                    <span class="arrow">→</span>
+                    <span class="stop">Ha Tinh</span>
+                    <span class="arrow">→</span>
+                    <span class="stop">Quang Binh</span>
+                    <span class="arrow">→</span>
+                    <span class="stop">Hue</span>
+                    <span class="arrow">→</span>
+                    <span class="stop">Da Nang</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 1 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">1</div>
+                <div class="day-info">
+                    <h3>Ninh Binh → Quang Binh</h3>
+                    <p>Quang duong: ~380 km | Thoi gian lai xe: ~6-7 tieng (co nghi)</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">05:00 - 05:30</span>
+                    <h4>Xuat phat tu Ninh Binh</h4>
+                    <p>Xuat phat som de tranh nang va ket xe. Chuan bi do an nhe, sua cho be tren xe.</p>
+                    <span class="baby-tag">Cho be an/bu truoc khi len xe</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">07:30 - 08:00</span>
+                    <h4>Nghi chan tai Thanh Hoa</h4>
+                    <p>Dung chan tai tram xang hoac quan an ven duong. An sang nhanh.</p>
+                    <span class="food-tag">Banh cuon Thanh Hoa</span>
+                    <span class="food-tag">Nem chua</span>
+                    <span class="baby-tag">Thay bim, cho be van dong</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">10:00 - 10:30</span>
+                    <h4>Nghi chan tai Nghe An (Vinh)</h4>
+                    <p>Dung nghi, do xang, ve sinh. Mua do an nhe mang theo.</p>
+                    <span class="food-tag">Chao luon Vinh</span>
+                    <span class="food-tag">Banh beo</span>
+                    <span class="baby-tag">Cho be nghi ngoi, bu/an dam</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">11:30 - 12:00</span>
+                    <h4>An trua tai Ha Tinh</h4>
+                    <p>Dung tai TP Ha Tinh an trua, nghi ngoi 30-45 phut.</p>
+                    <span class="food-tag">Cu doi Ha Tinh</span>
+                    <span class="food-tag">Bun bo Ha Tinh</span>
+                    <span class="food-tag">Keo cu do</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">14:00 - 15:00</span>
+                    <h4>Den Quang Binh - Nhan phong khach san</h4>
+                    <p>Nhan phong tai Dong Hoi. Nghi ngoi, tam rua cho ca nha.</p>
+                    <span class="landmark-tag">TP Dong Hoi</span>
+                    <span class="baby-tag">Cho be ngu trua, tam mat</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">16:30 - 18:00</span>
+                    <h4>Dao choi bai bien Nhat Le</h4>
+                    <p>Tan bo nhe nhang tai bai bien, ngam hoang hon.</p>
+                    <span class="landmark-tag">Bai bien Nhat Le</span>
+                    <span class="landmark-tag">Cau Nhat Le</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">18:30 - 20:00</span>
+                    <h4>An toi tai Dong Hoi</h4>
+                    <p>Thuong thuc hai san tuoi song tai cac nha hang ven bien.</p>
+                    <span class="food-tag">Hai san tuoi (muc, tom, cua)</span>
+                    <span class="food-tag">Chao hai san</span>
+                    <span class="food-tag">Banh loc</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 2 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">2</div>
+                <div class="day-info">
+                    <h3>Kham pha Quang Binh</h3>
+                    <p>Ca ngay tai Quang Binh - Tham quan hang dong va thien nhien</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">07:00 - 07:30</span>
+                    <h4>An sang tai khach san</h4>
+                    <p>An sang buffet hoac an sang dia phuong.</p>
+                    <span class="food-tag">Bun gio</span>
+                    <span class="food-tag">Xoi</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">08:00 - 11:30</span>
+                    <h4>Tham quan Dong Phong Nha</h4>
+                    <p>Di thuyen vao dong Phong Nha, ngam nhung khoi thach nhu tuyet dep. Luu y: mang ao mua nhe, nhiet do trong dong mat. Co the luon phien 2 nguoi vao dong, 2 nguoi o ngoai trong be.</p>
+                    <span class="landmark-tag">Dong Phong Nha</span>
+                    <span class="landmark-tag">Vuon Quoc gia Phong Nha - Ke Bang</span>
+                    <span class="baby-tag">Luon phien nguoi giu be o ngoai</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">12:00 - 13:30</span>
+                    <h4>An trua tai khu vuc Phong Nha</h4>
+                    <p>An trua tai cac nha hang gan dong.</p>
+                    <span class="food-tag">Ga nuong Phong Nha</span>
+                    <span class="food-tag">Lon quay</span>
+                    <span class="food-tag">Rau rung xao</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">14:00 - 16:00</span>
+                    <h4>Tham quan Dong Thien Duong</h4>
+                    <p>Dong Thien Duong co duong di bo trong dong rat dep. Tuong tu, luon phien nguoi tham quan.</p>
+                    <span class="landmark-tag">Dong Thien Duong</span>
+                    <span class="baby-tag">Co xe dien tu cong vao dong</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">16:30 - 17:30</span>
+                    <h4>Song Chay Hang Toi (tuy chon)</h4>
+                    <p>Trai nghiem zipline va kayak. Chi danh cho nguoi lon khoe manh, nguoi con lai trong be.</p>
+                    <span class="landmark-tag">Song Chay Hang Toi</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">18:00 - 20:00</span>
+                    <h4>Ve khach san, an toi</h4>
+                    <p>An toi tai Dong Hoi, nghi ngoi som de chuan bi ngay mai di tiep.</p>
+                    <span class="food-tag">Lau hai san</span>
+                    <span class="food-tag">Bot loc</span>
+                    <span class="food-tag">Ram Quang Binh</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 3 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">3</div>
+                <div class="day-info">
+                    <h3>Quang Binh → Hue</h3>
+                    <p>Quang duong: ~170 km | Thoi gian lai xe: ~3-4 tieng</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">07:00 - 08:00</span>
+                    <h4>An sang va tra phong</h4>
+                    <p>An sang, chuan bi hanh ly, tra phong khach san.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">08:00 - 09:30</span>
+                    <h4>Lai xe qua Quang Tri</h4>
+                    <p>Di qua dia phan Quang Tri, co the ghe tham Thanh Co Quang Tri neu muon.</p>
+                    <span class="landmark-tag">Thanh Co Quang Tri</span>
+                    <span class="landmark-tag">Cau Hien Luong - Song Ben Hai</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">09:30 - 10:00</span>
+                    <h4>Ghe tham Cau Hien Luong</h4>
+                    <p>Di tich lich su quan trong - gioi tuyen 17 chia cat Bac Nam. Chup anh ky niem.</p>
+                    <span class="landmark-tag">Gioi tuyen 17</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">11:30 - 12:00</span>
+                    <h4>Den Hue - Nhan phong</h4>
+                    <p>Nhan phong khach san o trung tam TP Hue. Nghi ngoi, cho be ngu.</p>
+                    <span class="baby-tag">Cho be nghi trua</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">12:30 - 13:30</span>
+                    <h4>An trua - Am thuc Hue</h4>
+                    <p>Thuong thuc cac mon dac san xu Hue noi tieng.</p>
+                    <span class="food-tag">Bun bo Hue</span>
+                    <span class="food-tag">Banh beo, banh nam, banh loc</span>
+                    <span class="food-tag">Com hen</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">14:30 - 17:00</span>
+                    <h4>Tham quan Dai Noi Hue</h4>
+                    <p>Tham quan Hoang Thanh, cac cung dien. Mang xe day cho be, di bo nhieu.</p>
+                    <span class="landmark-tag">Dai Noi Hue (Hoang Thanh)</span>
+                    <span class="landmark-tag">Ngo Mon</span>
+                    <span class="landmark-tag">Dien Thai Hoa</span>
+                    <span class="baby-tag">Mang xe day, mu non chong nang cho be</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">17:30 - 18:30</span>
+                    <h4>Dao bo ben song Huong</h4>
+                    <p>Tan bo doc bo song Huong, ngam cau Truong Tien. Khong khi mat me buoi chieu.</p>
+                    <span class="landmark-tag">Song Huong</span>
+                    <span class="landmark-tag">Cau Truong Tien</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">19:00 - 20:30</span>
+                    <h4>An toi tai Hue</h4>
+                    <p>Thuong thuc am thuc duong pho Hue buoi toi.</p>
+                    <span class="food-tag">Banh canh cua</span>
+                    <span class="food-tag">Che Hue</span>
+                    <span class="food-tag">Banh khoai</span>
+                    <span class="food-tag">Nem lui</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 4 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">4</div>
+                <div class="day-info">
+                    <h3>Kham pha Hue (tiep)</h3>
+                    <p>Ca ngay tai Hue - Tham quan lang tam va chua</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">07:00 - 08:00</span>
+                    <h4>An sang</h4>
+                    <p>An sang dia phuong tai quan ven duong.</p>
+                    <span class="food-tag">Bun hen</span>
+                    <span class="food-tag">Banh canh</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">08:30 - 10:00</span>
+                    <h4>Tham quan Chua Thien Mu</h4>
+                    <p>Ngoi chua co noi tieng nhat xu Hue, ben bo song Huong. Khuon vien rong rai, thoang mat.</p>
+                    <span class="landmark-tag">Chua Thien Mu</span>
+                    <span class="baby-tag">Khu vuc thoang, co bong mat</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">10:30 - 12:00</span>
+                    <h4>Tham quan Lang Tu Duc</h4>
+                    <p>Mot trong nhung lang tam dep nhat Hue. Kien truc hai hoa voi thien nhien.</p>
+                    <span class="landmark-tag">Lang Tu Duc</span>
+                    <span class="landmark-tag">Ho Luu Khiem</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">12:00 - 13:30</span>
+                    <h4>An trua</h4>
+                    <p>An trua tai nha hang gan khu vuc lang.</p>
+                    <span class="food-tag">Com am phu</span>
+                    <span class="food-tag">Bun thit nuong</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">14:00 - 15:30</span>
+                    <h4>Tham quan Lang Khai Dinh</h4>
+                    <p>Lang tam co kien truc pha tron Dong - Tay doc dao.</p>
+                    <span class="landmark-tag">Lang Khai Dinh</span>
+                    <span class="baby-tag">Co bac thang - can be chat</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">16:00 - 17:30</span>
+                    <h4>Cho Dong Ba</h4>
+                    <p>Mua sam dac san Hue mang ve: me xung, tom chua, mam tom...</p>
+                    <span class="landmark-tag">Cho Dong Ba</span>
+                    <span class="food-tag">Me xung</span>
+                    <span class="food-tag">Tom chua Hue</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">18:00 - 20:00</span>
+                    <h4>An toi va nghi ngoi</h4>
+                    <p>An toi, nghi ngoi som chuan bi ngay mai di Da Nang.</p>
+                    <span class="food-tag">Lau Hue (lau thai)</span>
+                    <span class="food-tag">Banh ep Hue</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 5 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">5</div>
+                <div class="day-info">
+                    <h3>Hue → Da Nang</h3>
+                    <p>Quang duong: ~100 km | Thoi gian lai xe: ~2.5 tieng (qua deo Hai Van)</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">07:00 - 08:00</span>
+                    <h4>An sang va tra phong</h4>
+                    <p>An sang, sap xep hanh ly, tra phong.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">08:30 - 09:00</span>
+                    <h4>Ghe Lang Co</h4>
+                    <p>Dung chan tai vinh Lang Co - mot trong nhung vinh dep nhat the gioi.</p>
+                    <span class="landmark-tag">Vinh Lang Co</span>
+                    <span class="food-tag">Banh canh cua Lang Co</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">09:00 - 10:00</span>
+                    <h4>Vuot deo Hai Van</h4>
+                    <p>Di deo Hai Van (khong di ham) de ngam canh. Dung lai dinh deo chup anh panorama.</p>
+                    <span class="landmark-tag">Deo Hai Van</span>
+                    <span class="landmark-tag">Dinh deo - Hai Van Quan</span>
+                    <span class="baby-tag">Lai xe can than, duong deo quanh co</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">10:30 - 11:00</span>
+                    <h4>Den Da Nang - Nhan phong</h4>
+                    <p>Nhan phong khach san o khu vuc bai bien My Khe hoac trung tam.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">11:30 - 13:00</span>
+                    <h4>An trua tai Da Nang</h4>
+                    <p>Thuong thuc dac san Da Nang.</p>
+                    <span class="food-tag">Mi Quang</span>
+                    <span class="food-tag">Bun cha ca</span>
+                    <span class="food-tag">Banh trang cuon thit heo</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">14:00 - 15:00</span>
+                    <h4>Nghi trua</h4>
+                    <p>Nghi ngoi tai khach san, cho be ngu trua.</p>
+                    <span class="baby-tag">Be nghi trua</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">15:30 - 17:30</span>
+                    <h4>Tam bien My Khe</h4>
+                    <p>Tam bien tai bai bien My Khe - top nhung bai bien dep nhat hanh tinh. Song nhe, phu hop ca nha.</p>
+                    <span class="landmark-tag">Bai bien My Khe</span>
+                    <span class="baby-tag">Cho be choi cat ven bo, tranh nang</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">18:00 - 19:00</span>
+                    <h4>Ngam cau Rong phun lua</h4>
+                    <p>Toi thu 7 va Chu nhat, cau Rong phun lua va nuoc luc 21:00. Di som chon cho dep.</p>
+                    <span class="landmark-tag">Cau Rong</span>
+                    <span class="landmark-tag">Cau Tinh Yeu</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">19:00 - 20:30</span>
+                    <h4>An toi hai san</h4>
+                    <p>An hai san tuoi tai khu Be Man hoac Pham Van Dong.</p>
+                    <span class="food-tag">Hai san tuoi song</span>
+                    <span class="food-tag">Oc huong nuong mo hanh</span>
+                    <span class="food-tag">Tom hum nuong</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 6 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">6</div>
+                <div class="day-info">
+                    <h3>Kham pha Da Nang - Hoi An</h3>
+                    <p>Ca ngay tai Da Nang va Hoi An</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">06:00 - 07:00</span>
+                    <h4>An sang va di Ba Na Hills (tuy chon)</h4>
+                    <p>Neu muon di Ba Na Hills, xuat phat som. Hoac bo qua de di Hoi An ca ngay.</p>
+                    <span class="landmark-tag">Ba Na Hills (tuy chon)</span>
+                    <span class="landmark-tag">Cau Vang</span>
+                    <span class="baby-tag">Ba Na co cap treo - can than voi be nho</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">08:00 - 08:30</span>
+                    <h4>Lai xe den Hoi An</h4>
+                    <p>Tu Da Nang di Hoi An chi khoang 30 km, 40 phut lai xe.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">09:00 - 11:30</span>
+                    <h4>Tham quan Pho co Hoi An</h4>
+                    <p>Dao bo pho co, tham chua Cau, nha co, hoi quan. Buoi sang it nguoi, thoang mat hon.</p>
+                    <span class="landmark-tag">Chua Cau (Lai Vien Kieu)</span>
+                    <span class="landmark-tag">Nha co Tan Ky</span>
+                    <span class="landmark-tag">Hoi quan Phuc Kien</span>
+                    <span class="landmark-tag">Pho den long</span>
+                    <span class="baby-tag">Mang xe day, pho co cam oto</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">11:30 - 13:00</span>
+                    <h4>An trua tai Hoi An</h4>
+                    <p>Thuong thuc cac mon dac san Hoi An.</p>
+                    <span class="food-tag">Cao lau</span>
+                    <span class="food-tag">Mi Quang</span>
+                    <span class="food-tag">Com ga Hoi An</span>
+                    <span class="food-tag">Banh mi Phuong</span>
+                    <span class="food-tag">Hoanh thanh chien</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">13:30 - 15:30</span>
+                    <h4>Bai bien An Bang</h4>
+                    <p>Nghi ngoi tai bai bien An Bang, tam bien, uong nuoc dua.</p>
+                    <span class="landmark-tag">Bai bien An Bang</span>
+                    <span class="baby-tag">Co ghe ngu, du che nang</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">16:00 - 18:00</span>
+                    <h4>Pho co Hoi An buoi chieu</h4>
+                    <p>Quay lai pho co luc chieu muon de ngam den long. Mua qua luu niem.</p>
+                    <span class="landmark-tag">Cho Hoi An</span>
+                    <span class="food-tag">Che bap</span>
+                    <span class="food-tag">Banh dap</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">18:30 - 20:00</span>
+                    <h4>An toi tai Hoi An va ve Da Nang</h4>
+                    <p>An toi roi lai xe ve Da Nang (khoang 40 phut).</p>
+                    <span class="food-tag">Lau lau Hoi An</span>
+                    <span class="food-tag">Banh bao banh vac (White Rose)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 7 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">7</div>
+                <div class="day-info">
+                    <h3>Da Nang → Hue (quay ve)</h3>
+                    <p>Quang duong: ~100 km | Bat dau hanh trinh ve</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">07:00 - 08:30</span>
+                    <h4>An sang va check-out</h4>
+                    <p>An sang, mua them dac san Da Nang mang ve. Tra phong.</p>
+                    <span class="food-tag">Banh xeo ba Duong</span>
+                    <span class="food-tag">Mua nuoc mam Nam O</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">08:30 - 09:30</span>
+                    <h4>Ghe Ban dao Son Tra (tuy chon)</h4>
+                    <p>Neu co thoi gian, ghe chua Linh Ung ngam tuong Phat ba cao nhat Viet Nam.</p>
+                    <span class="landmark-tag">Chua Linh Ung - Son Tra</span>
+                    <span class="landmark-tag">Ban dao Son Tra</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">10:00 - 12:00</span>
+                    <h4>Lai xe ve Hue</h4>
+                    <p>Di ham Hai Van de tiet kiem thoi gian tren duong ve.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">12:00 - 13:30</span>
+                    <h4>An trua tai Hue</h4>
+                    <p>An nhung mon chua kip thu hom truoc.</p>
+                    <span class="food-tag">Bun bo giau</span>
+                    <span class="food-tag">Banh uot</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">14:00 - 17:00</span>
+                    <h4>Lai xe ve Quang Binh / Ha Tinh</h4>
+                    <p>Lai xe khoang 200 km. Dung nghi giua duong. Ngu dem tai Ha Tinh hoac Quang Binh tuy suc.</p>
+                    <span class="baby-tag">Cho be ngu tren xe, nghi 1-2 lan</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">17:00 - 20:00</span>
+                    <h4>Nhan phong va an toi</h4>
+                    <p>Nhan phong tai Ha Tinh hoac Quang Binh. An toi nghi ngoi.</p>
+                    <span class="food-tag">Dac san dia phuong</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NGAY 8 -->
+        <div class="card">
+            <div class="day-header">
+                <div class="day-num">8</div>
+                <div class="day-info">
+                    <h3>Ha Tinh → Ninh Binh (ve nha)</h3>
+                    <p>Quang duong: ~300 km | Thoi gian lai xe: ~5-6 tieng</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">06:00 - 07:00</span>
+                    <h4>An sang va tra phong</h4>
+                    <p>Xuat phat som de ve den nha truoc toi.</p>
+                    <span class="baby-tag">Chuan bi do an, sua cho be tren xe</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">07:00 - 09:30</span>
+                    <h4>Lai xe qua Nghe An</h4>
+                    <p>Di lien mach qua Nghe An, dung nghi tai Vinh neu can.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">09:30 - 10:00</span>
+                    <h4>Nghi chan tai Vinh (Nghe An)</h4>
+                    <p>Do xang, ve sinh, mua do an nhe.</p>
+                    <span class="food-tag">Ca phe sang</span>
+                    <span class="baby-tag">Cho be van dong</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">10:00 - 12:00</span>
+                    <h4>Lai xe qua Thanh Hoa</h4>
+                    <p>Tiep tuc di ve huong Bac.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">12:00 - 12:30</span>
+                    <h4>An trua tai Thanh Hoa</h4>
+                    <p>Dung chan an trua.</p>
+                    <span class="food-tag">Nem chua Thanh Hoa</span>
+                    <span class="food-tag">Pho bo</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">12:30 - 14:00</span>
+                    <h4>Ve den Ninh Binh</h4>
+                    <p>Ve den nha an toan. Ket thuc chuyen di!</p>
+                    <span class="landmark-tag">🏠 Ve nha an toan!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHI PHI -->
+        <div class="card">
+            <h2>💰 Du Toan Chi Phi</h2>
+            <p><em>Uoc tinh cho 4 nguoi lon + 1 be 7 thang, 8 ngay 7 dem</em></p>
+
+            <h3>Chi phi xang xe</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Hang muc</th>
+                        <th>Chi tiet</th>
+                        <th>Thanh tien (VND)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Xang xe (ca di ve + di lai)</td>
+                        <td>~1.600 km, xe 7-8L/100km, gia xang ~22.000d/L</td>
+                        <td>2.800.000</td>
+                    </tr>
+                    <tr>
+                        <td>Phi cau duong, gui xe</td>
+                        <td>Cac tram thu phi, bai gui xe</td>
+                        <td>500.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Chi phi luu tru (7 dem)</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Dia diem</th>
+                        <th>So dem</th>
+                        <th>Gia/dem (2 phong)</th>
+                        <th>Thanh tien (VND)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Quang Binh (Dong Hoi)</td>
+                        <td>2 dem</td>
+                        <td>1.200.000</td>
+                        <td>2.400.000</td>
+                    </tr>
+                    <tr>
+                        <td>Hue</td>
+                        <td>2 dem</td>
+                        <td>1.200.000</td>
+                        <td>2.400.000</td>
+                    </tr>
+                    <tr>
+                        <td>Da Nang</td>
+                        <td>2 dem</td>
+                        <td>1.400.000</td>
+                        <td>2.800.000</td>
+                    </tr>
+                    <tr>
+                        <td>Ha Tinh (dem ve)</td>
+                        <td>1 dem</td>
+                        <td>1.000.000</td>
+                        <td>1.000.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Chi phi an uong</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Bua an</th>
+                        <th>So bua</th>
+                        <th>Gia trung binh/bua (4 nguoi)</th>
+                        <th>Thanh tien (VND)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>An sang</td>
+                        <td>8 bua</td>
+                        <td>200.000</td>
+                        <td>1.600.000</td>
+                    </tr>
+                    <tr>
+                        <td>An trua</td>
+                        <td>8 bua</td>
+                        <td>500.000</td>
+                        <td>4.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>An toi</td>
+                        <td>7 bua</td>
+                        <td>700.000</td>
+                        <td>4.900.000</td>
+                    </tr>
+                    <tr>
+                        <td>An vat, nuoc uong</td>
+                        <td>8 ngay</td>
+                        <td>200.000</td>
+                        <td>1.600.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Chi phi tham quan</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Dia diem</th>
+                        <th>Gia ve/nguoi</th>
+                        <th>So nguoi</th>
+                        <th>Thanh tien (VND)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dong Phong Nha (ve + thuyen)</td>
+                        <td>150.000</td>
+                        <td>4</td>
+                        <td>600.000</td>
+                    </tr>
+                    <tr>
+                        <td>Dong Thien Duong (ve + xe dien)</td>
+                        <td>250.000</td>
+                        <td>4</td>
+                        <td>1.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Song Chay Hang Toi</td>
+                        <td>450.000</td>
+                        <td>2</td>
+                        <td>900.000</td>
+                    </tr>
+                    <tr>
+                        <td>Dai Noi Hue</td>
+                        <td>200.000</td>
+                        <td>4</td>
+                        <td>800.000</td>
+                    </tr>
+                    <tr>
+                        <td>Lang Tu Duc</td>
+                        <td>100.000</td>
+                        <td>4</td>
+                        <td>400.000</td>
+                    </tr>
+                    <tr>
+                        <td>Lang Khai Dinh</td>
+                        <td>100.000</td>
+                        <td>4</td>
+                        <td>400.000</td>
+                    </tr>
+                    <tr>
+                        <td>Pho co Hoi An (ve tham quan)</td>
+                        <td>120.000</td>
+                        <td>4</td>
+                        <td>480.000</td>
+                    </tr>
+                    <tr>
+                        <td>Ba Na Hills (tuy chon)</td>
+                        <td>900.000</td>
+                        <td>4</td>
+                        <td>3.600.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Chi phi khac</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Hang muc</th>
+                        <th>Chi tiet</th>
+                        <th>Thanh tien (VND)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bim ta, sua, do dung cho be</td>
+                        <td>8 ngay</td>
+                        <td>800.000</td>
+                    </tr>
+                    <tr>
+                        <td>Qua luu niem, dac san mang ve</td>
+                        <td>Mua tai cac diem</td>
+                        <td>1.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Chi phi phat sinh</td>
+                        <td>Du phong</td>
+                        <td>2.000.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>🧾 Tong Ket Chi Phi</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Nhom chi phi</th>
+                        <th>Thanh tien (VND)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Xang xe va phi duong</td>
+                        <td>3.300.000</td>
+                    </tr>
+                    <tr>
+                        <td>Luu tru (7 dem x 2 phong)</td>
+                        <td>8.600.000</td>
+                    </tr>
+                    <tr>
+                        <td>An uong</td>
+                        <td>12.100.000</td>
+                    </tr>
+                    <tr>
+                        <td>Tham quan (khong Ba Na)</td>
+                        <td>4.580.000</td>
+                    </tr>
+                    <tr>
+                        <td>Chi phi khac</td>
+                        <td>3.800.000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>TONG CONG (khong Ba Na)</strong></td>
+                        <td><strong>32.380.000</strong></td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>TONG CONG (co Ba Na Hills)</strong></td>
+                        <td><strong>35.980.000</strong></td>
+                    </tr>
+                    <tr>
+                        <td><em>Trung binh/nguoi lon (khong Ba Na)</em></td>
+                        <td><em>~8.100.000</em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- LUU Y VE EM BE -->
+        <div class="card">
+            <h2>👶 Luu Y Khi Di Voi Be 7 Thang Tuoi</h2>
+            <div class="baby-tips">
+                <h3>Do dung can mang theo cho be</h3>
+                <ul>
+                    <li>Xe day em be (loai gap gon) - rat can khi tham quan</li>
+                    <li>Ghe ngoi o to (car seat) cho be - dam bao an toan</li>
+                    <li>Bim ta du dung 8 ngay (hoac mua them doc duong)</li>
+                    <li>Sua cong thuc / do dung hut sua (neu can)</li>
+                    <li>Do an dam cho be (chao xay, bich an dam)</li>
+                    <li>Quan ao thoang mat + ao am cho vung nui/dong</li>
+                    <li>Kem chong nang cho be (loai danh cho infant)</li>
+                    <li>Thuoc ha sot, thuoc tieu hoa, nhiet ke</li>
+                    <li>Man chong muoi di dong</li>
+                    <li>Do choi nho giu be vui tren xe</li>
+                </ul>
+            </div>
+            <div class="baby-tips" style="margin-top: 20px; background: #e3f2fd; border-color: #64b5f6;">
+                <h3>Meo di xe duong dai voi be</h3>
+                <ul>
+                    <li>Di vao sang som hoac gio be ngu de be ngu tren xe</li>
+                    <li>Dung nghi moi 1.5 - 2 tieng de be van dong</li>
+                    <li>Giu nhiet do xe mat me (24-26 do C)</li>
+                    <li>Mang theo khan uot, khan giay nhieu</li>
+                    <li>Dat ghe ngoi be quay ve phia sau xe</li>
+                    <li>Chuan bi tui non phong khi be say xe</li>
+                    <li>Luon co 1 nguoi ngoi canh be phia sau</li>
+                    <li>Tranh lai xe qua 4-5 tieng lien tuc</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TIPS -->
+        <div class="card">
+            <h2>📝 Luu Y Va Meo Hay</h2>
+            <ul class="tips-list">
+                <li>Kiem tra xe truoc khi di: dau nhot, nuoc mat, lop xe, dung cu sua xe co ban.</li>
+                <li>Tai app ban do (Google Maps/Waze) va tai ban do offline phong mat song.</li>
+                <li>Dat phong khach san truoc, uu tien noi co bai dau xe va gan trung tam.</li>
+                <li>Mang theo tien mat du (nhieu noi vung que chua chap nhan chuyen khoan).</li>
+                <li>Thoi diem dep nhat di mien Trung: thang 3-8 (tranh mua bao thang 9-11).</li>
+                <li>Deo Hai Van nen di ban ngay, khong nen di khi troi mua hoac suong mu.</li>
+                <li>Mang theo o du, ao mua, kem chong nang - thoi tiet mien Trung hay thay doi.</li>
+                <li>Nen mua bao hiem du lich cho ca gia dinh.</li>
+                <li>Luu so benh vien/phong kham gan nhat tai moi diem dung phong truong hop khan cap voi be.</li>
+                <li>Luan phien nguoi lai xe de dam bao an toan, moi nguoi lai toi da 3-4 tieng.</li>
+                <li>Mang theo thung giua lanh de giu do an/sua mat cho be.</li>
+                <li>Nen co it nhat 2 nguoi biet lai xe de thay nhau.</li>
+            </ul>
+        </div>
+
+        <!-- THONG TIN LIEN HE KHAN CAP -->
+        <div class="card">
+            <h2>🏥 So Dien Thoai Huu Ich</h2>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Dich vu</th>
+                        <th>So dien thoai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cap cuu</td>
+                        <td>115</td>
+                    </tr>
+                    <tr>
+                        <td>Cong an giao thong</td>
+                        <td>113</td>
+                    </tr>
+                    <tr>
+                        <td>Cuu ho giao thong</td>
+                        <td>1900 6053</td>
+                    </tr>
+                    <tr>
+                        <td>Benh vien Da khoa Dong Hoi</td>
+                        <td>0232 382 2076</td>
+                    </tr>
+                    <tr>
+                        <td>Benh vien Trung uong Hue</td>
+                        <td>0234 382 2325</td>
+                    </tr>
+                    <tr>
+                        <td>Benh vien Da Nang</td>
+                        <td>0236 382 1480</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>🚗 Chuc gia dinh co chuyen du lich vui ve va an toan! 🌟</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Ke hoach duoc tao tu dong - Vui long kiem tra lai gia ve va gia phong truoc khi di</p>
+    </footer>
+</body>
+</html>
